@@ -1,0 +1,12 @@
+com\deviceinsight\smslib\SMSMessageProperties.class
+com\deviceinsight\smslib\outbound\ISMSOutboundProvider.class
+com\deviceinsight\smslib\providers\SMS4OutboundProvider.class
+com\deviceinsight\smslib\log\SMSLogger.class
+com\deviceinsight\smslib\providers\AbstractOutboundProvider.class
+com\deviceinsight\smslib\SMSMessage.class
+com\deviceinsight\smslib\outbound\SMSOutboundException.class
+com\deviceinsight\smslib\providers\ClickatellOutboundProvider.class
+com\deviceinsight\smslib\providers\MobilantOutboundProvider.class
+com\deviceinsight\smslib\providers\SilyusOutboundProvider.class
+com\deviceinsight\smslib\outbound\SMSOutboundProviderFactory.class
+com\deviceinsight\smslib\providers\SmskaufenOutboundProvider.class

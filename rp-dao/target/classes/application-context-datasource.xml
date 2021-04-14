@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:sec="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+       http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<!-- Configurazione per utilizzo del database (MySQL) -->
+	<!-- Implementazione di Spring di una SessionFactory che utilizza le annotazioni 
+		javax.persistence per mappare le entità di hibernate. Diversamente da come 
+		avviene utilizzando un EntityManagerFactory, le classi di persistenza non 
+		vengono elencate nel file persistence.xml, ma vengono elencate direttamente 
+		in questo bean nella proprietà 'annotatedClasses'. Qui si può anche settare 
+		da file di properties lo schema corretto da anteporre nelle named query. -->
+
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="annotatedClasses">
+			<list>
+				<value>com.bvtech.registration.portal.bean.RefusedCode</value>
+				<value>com.bvtech.registration.portal.bean.Config</value>
+				<value>com.bvtech.registration.portal.bean.PersonalInformation</value>
+				<value>com.bvtech.registration.portal.bean.ProcessInformation</value>
+				<value>com.bvtech.registration.portal.bean.ProcessTypeAuthentication</value>
+				<value>com.bvtech.registration.portal.bean.RegistrationCode</value>
+				<value>com.bvtech.registration.portal.bean.StatusProcess</value>
+				<value>com.bvtech.registration.portal.bean.StatusUser</value>
+				<value>com.bvtech.registration.portal.bean.TypeAuthenticationProcess</value>
+				<value>com.bvtech.registration.portal.bean.TypeDiabetes</value>
+				<value>com.bvtech.registration.portal.bean.LoginAttempts</value>
+				<value>com.bvtech.registration.portal.bean.Tasks</value>
+				<value>com.bvtech.registration.portal.bean.PatientToSend</value>
+				<value>com.bvtech.registration.portal.bean.ShippingToSend</value>
+				<value>com.bvtech.registration.portal.bean.RowsCsvView</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop> <!-- none / validate -->
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.jdbc.batch_size">1</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close" p:driverClassName="com.mysql.jdbc.Driver"
+		p:url="${mysql.database.url}" p:password="${mysql.database.pwd}"
+		p:username="${mysql.database.user}" p:validationQuery="select 1 from dual"
+		p:initialSize="1" p:maxActive="20"
+		p:maxIdle="5" p:maxWait="10000" />
+
+</beans>

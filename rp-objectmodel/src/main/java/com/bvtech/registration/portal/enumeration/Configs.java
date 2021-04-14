@@ -1,0 +1,29 @@
+package com.bvtech.registration.portal.enumeration;
+
+public enum Configs {
+	
+
+	
+	LOCKED_HOURS("LOCKED_HOURS")
+	, MAX_ATTEMPT_CSV("MAX_ATTEMPT_CSV")
+	, MAX_ATTEMPT_LOGIN("MAX_ATTEMPT_LOGIN")
+	, PATH_CSV_CREATE("MAX_ATTEMPT_LOGIN")
+	, PATH_CSV_SEND("PATH_CSV_SEND")
+	, PATH_TERMS_CONDITIONS("PATH_TERMS_CONDITIONS")
+	, CODE_EXPIRED_AFTER_DAYS("CODE_EXPIRED_AFTER_DAYS")
+	, DEL_DATA_INTERRUPTED_REG_AFTER_DAYS("DEL_DATA_INTERRUPTED_REG_AFTER_DAYS")
+	, DEL_DATA_PARTIALLY_REFUSED_AFTER_DAYS("DEL_DATA_PARTIALLY_REFUSED_AFTER_DAYS")
+	, SEND_EMAIL_AFTER_HOURS("SEND_EMAIL_AFTER_HOURS");
+	
+	private String value;
+
+	private Configs(String value) {
+		this.value = value;
+	}
+
+	public String getValue() {
+		return this.value;
+	}
+
+	
+}

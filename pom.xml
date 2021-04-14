@@ -1,0 +1,347 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.bvtech</groupId>
+	<artifactId>registration-portal-masterpom</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>registration-portal-masterpom</name>
+	<description>Maven project to develop Registration Platform for "Diabetes Telemonitoring Project"</description>
+	<modules>
+		<module>rp-objectmodel</module>
+		<module>rp-dao</module>
+		<module>rp-smslib</module>
+		<module>rp-maillib</module>
+		<module>rp-businesslayer</module>
+		<module>registration-portal</module>
+		<module>registration-scheduler</module>
+	</modules>
+	
+	<scm>
+		<connection>scm:svn:https://172.27.0.196/svn/EuropeAssistance/trunk</connection>
+		<developerConnection>scm:svn:https://172.27.0.196/svn/EuropeAssistance/trunk</developerConnection>
+	</scm>
+	
+	<properties>
+		<springframework.version>4.2.3.RELEASE</springframework.version>
+		<springsecurity.version>4.1.1.RELEASE</springsecurity.version>
+		<quartz.version>2.2.2</quartz.version>
+		<junit.version>4.12</junit.version>
+		<persistence.version>1.0</persistence.version>
+		<project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
+		<project.build.number>0.0.1-SNAPSHOT</project.build.number>
+	</properties>
+	
+	<build>
+	    <pluginManagement>
+	        <plugins>
+	            <!-- Default java version was 1.5, to change the default version added this plugin -->
+	            <plugin>
+	                <groupId>org.apache.maven.plugins</groupId>
+	                <artifactId>maven-compiler-plugin</artifactId>
+	                <configuration>
+	                    <source>1.7</source>
+	                    <target>1.7</target>
+	                </configuration>
+	            </plugin>
+	            
+	            <plugin>
+			        <groupId>org.apache.tomcat.maven</groupId>
+			        <artifactId>tomcat7-maven-plugin</artifactId>
+			        <version>2.2</version>
+			        <configuration>
+			          <url>http://localhost:8090/portal</url>
+			        </configuration>
+			      </plugin>
+	        </plugins>
+	    </pluginManagement>
+	</build>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- Spring Security framework -->
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-web</artifactId>
+				<version>${springsecurity.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-config</artifactId>
+				<version>${springsecurity.version}</version>
+			</dependency>
+			<dependency>
+			    <groupId>org.springframework.security.oauth</groupId>
+			    <artifactId>spring-security-oauth2</artifactId>
+			    <version>2.0.19.RELEASE</version>
+			</dependency>
+			<!-- Spring framework -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-tx</artifactId>
+				<version>${springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context-support</artifactId>
+				<version>${springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>${springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>
+				<version>${springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-test</artifactId>
+				<version>${springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-orm</artifactId>
+				<version>${springframework.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>javax.transaction</groupId>
+				<artifactId>jta</artifactId>
+				<version>1.1</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-dbcp</groupId>
+				<artifactId>commons-dbcp</artifactId>
+				<version>1.4</version>
+			</dependency>
+
+
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>servlet-api</artifactId>
+				<version>2.5</version>
+			</dependency>
+
+			<dependency>
+				<groupId>javax.servlet.jsp.jstl</groupId>
+				<artifactId>jstl-api</artifactId>
+				<version>1.2</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet.jsp</groupId>
+				<artifactId>javax.servlet.jsp-api</artifactId>
+				<version>2.3.1</version>
+			</dependency>
+			<!-- Hibernate libraries -->
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-entitymanager</artifactId>
+				<version>4.3.11.Final</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-validator</artifactId>
+				<version>5.2.2.Final</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-core</artifactId>
+				<version>4.3.11.Final</version>
+			</dependency>
+
+			<!-- xml library -->
+			<dependency>
+				<groupId>org.codehaus.jackson</groupId>
+				<artifactId>jackson-mapper-asl</artifactId>
+				<version>1.9.13</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-core</artifactId>
+				<version>2.10.1</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>2.10.1</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-annotations</artifactId>
+				<version>2.10.1</version>
+			</dependency>
+
+			<!-- Other -->
+			<dependency>
+				<groupId>javax.persistence</groupId>
+				<artifactId>persistence-api</artifactId>
+				<version>${persistence.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.validation</groupId>
+				<artifactId>validation-api</artifactId>
+				<version>1.1.0.Final</version>
+			</dependency>
+			<dependency>
+			    <groupId>com.auth0</groupId>
+			    <artifactId>java-jwt</artifactId>
+			    <version>3.8.3</version>
+			</dependency>
+
+
+			<!-- sftp lib - jcraft/jsch -->
+			<dependency>
+				<groupId>com.jcraft</groupId>
+				<artifactId>jsch</artifactId>
+				<version>0.1.54</version>
+			</dependency>
+
+
+			<!-- Spring Jsp/utility -->
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>jstl</artifactId>
+				<version>1.1.2</version>
+				<type>jar</type>
+			</dependency>
+
+			<dependency>
+				<groupId>taglibs</groupId>
+				<artifactId>standard</artifactId>
+				<version>1.1.2</version>
+				<type>jar</type>
+			</dependency>
+			
+			<dependency>
+			    <groupId>mysql</groupId>
+			    <artifactId>mysql-connector-java</artifactId>
+			    <version>5.1.39</version>
+			</dependency>
+
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>5.1.38</version>
+				<scope>test</scope>
+			</dependency>
+
+			<!-- Jaxb library -->
+			<dependency>
+				<groupId>javax.xml.bind</groupId>
+				<artifactId>jaxb-api</artifactId>
+				<version>2.1</version>
+			</dependency>
+			<dependency>
+				<groupId>com.sun.xml.bind</groupId>
+				<artifactId>jaxb-impl</artifactId>
+				<version>2.2.5-b10</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-log4j12</artifactId>
+				<version>1.7.5</version>
+			</dependency>
+			<!-- Quartz framework -->
+			<dependency>
+				<groupId>org.quartz-scheduler</groupId>
+				<artifactId>quartz</artifactId>
+				<version>${quartz.version}</version>
+			</dependency>
+
+			<!-- test -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+			</dependency>
+
+			<!-- Log Libraries -->
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>1.2.17</version>
+			</dependency>
+			<dependency>
+				<groupId>org.perf4j</groupId>
+				<artifactId>perf4j</artifactId>
+				<version>0.9.16</version>
+			</dependency>
+
+			<!-- Apache Commons FileUpload -->
+			<dependency>
+				<groupId>commons-fileupload</groupId>
+				<artifactId>commons-fileupload</artifactId>
+				<version>1.3.2</version>
+			</dependency>
+
+			<!-- Apache Commons IO -->
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>2.5</version>
+			</dependency>
+
+			<!-- This project modules -->
+			<dependency>
+				<groupId>com.bvtech</groupId>
+				<artifactId>rp-smslib</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.bvtech</groupId>
+				<artifactId>rp-objectmodel</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.bvtech</groupId>
+				<artifactId>rp-dao</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.bvtech</groupId>
+				<artifactId>rp-businesslayer</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.bvtech</groupId>
+				<artifactId>rp-servicelayer</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.bvtech</groupId>
+				<artifactId>rp-frontend</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.bvtech</groupId>
+				<artifactId>rp-scheduler</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.bvtech</groupId>
+				<artifactId>registration-scheduler</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.bvtech</groupId>
+				<artifactId>rp-maillib</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+</project>
