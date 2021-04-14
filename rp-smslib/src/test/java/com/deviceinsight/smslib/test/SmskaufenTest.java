@@ -23,7 +23,7 @@ public class SmskaufenTest extends TestCase {
 		msg.setMessage("EuropAssistance Compile Test CWi)");
 		
 		Properties props = new Properties();
-		
+
 		provider.sendMessage(msg, props);
 				
 	}
