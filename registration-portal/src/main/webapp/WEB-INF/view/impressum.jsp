@@ -15,7 +15,7 @@
 <link rel="icon" href="<c:url value="/favicon.ico" />"
 	type="image/x-icon" />
 <link rel="stylesheet" type="text/css" media="all"
-      href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css"    />
+      href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.0/themes/smoothness/jquery-ui.css"    />
 </head>
 <body>
 	<div id="logo">

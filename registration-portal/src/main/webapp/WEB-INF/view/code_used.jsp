@@ -6,7 +6,7 @@
 	<br>
 	
 	<div id="divField"> 
-		<p>Sie wurden bereits für dieses Programm regestriert!</p><br>
+		<p>Sie wurden bereits für dieses Programm registriert!</p><br>
 		<p>Bei Fragen melden Sie sich bitte unter Tel. : 0221 1636-6668</p><br>
 		<p>Vielen Dank !<br>Mit den besten Wünschen für Ihre Gesundheit,<br>Ihre Europ Assistance Services GmbH</p>
 	</div>	
